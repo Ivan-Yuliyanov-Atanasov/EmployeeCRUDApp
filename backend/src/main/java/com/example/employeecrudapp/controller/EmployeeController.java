@@ -3,10 +3,7 @@ package com.example.employeecrudapp.controller;
 
 import com.example.employeecrudapp.model.Employee;
 import com.example.employeecrudapp.repository.EmployeeRepository;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +21,10 @@ public class EmployeeController {
     @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
         return this.employeeRepository.findAll();
+    }
+
+    @PostMapping("/employees")
+    public Employee createEmployee(@RequestBody Employee employee){
+        return this.employeeRepository.save(employee);
     }
 }
